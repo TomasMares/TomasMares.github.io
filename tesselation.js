@@ -64,6 +64,7 @@ function updateDepth()
     if (depth > 10)
     {
         recursionDepthInput.value = 10;
+        depth = 10;
     }
     
     points = [];
