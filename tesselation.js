@@ -60,6 +60,12 @@ function updateAngle()
 
 function updateDepth()
 {
+    var depth = Number(recursionDepthInput.value);
+    if (depth > 10)
+    {
+        recursionDepthInput.value = 10;
+    }
+    
     points = [];
     
     function triangle( a, b, c )
@@ -85,7 +91,6 @@ function updateDepth()
         }
     }
     
-    var depth = Number(recursionDepthInput.value);
     divideTriangle( vec2( -0.6, -0.45 ), vec2(  0,  0.75 ), vec2(  0.6, -0.45 ), depth);
     
     gl.bufferData( gl.ARRAY_BUFFER, flatten(points), gl.STATIC_DRAW );
