@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>paint</title>
+
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec2 vPosition;
+attribute vec3 vColor;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_Position = vec4(vPosition, 0.0, 1.0);
+    fColor = vec4(vColor, 1.0);
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="webgl-utils.js"></script>
+<script type="text/javascript" src="initShaders.js"></script>
+<script type="text/javascript" src="MV.js"></script>
+<script type="text/javascript" src="paint.js"></script>
+</head>   
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+
+<div>
+<label for="redComponent">red</label><input id="redComponent" type="range" min="0.0" max="1.0" step="0.05"></input>
+<label for="greenComponent">green</label><input id="greenComponent" type="range" min="0.0" max="1.0" step="0.05"></input>
+<label for="blueComponent">blue</label><input id="blueComponent" type="range" min="0.0" max="1.0" step="0.05"></input>
+</div>
+
+<div>
+<button id="clearButton" type="button">Clear</button>
+<button id="undoButton" type="button">Undo</button>
+</div>
+
+</body>
+</html>
